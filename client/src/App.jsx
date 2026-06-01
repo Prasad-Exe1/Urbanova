@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Routes, Route, Link, Navigate, useLocation } from 'react-router-dom';
+import { Routes, Route, Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import Home from './pages/Home';
 import Properties from './pages/Properties';
 import ListingDetails from './pages/ListingDetails';
@@ -24,6 +24,7 @@ function App() {
   const [authConfig, setAuthConfig] = useState({ view: 'login', role: 'buyer' });
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const checkAuth = () => {
@@ -328,8 +329,20 @@ function App() {
 
         <Route path="/api-test" element={<ApiTester />} />
 
-        <Route path="/bvy-estate" element={<AdminEntry onAdminLogin={handleAdminLogin} />} />
-      </Routes>
+<Route
+  path="/profile"
+  element={
+    <div style={{ padding: '40px', color: 'white' }}>
+      <h1>Profile</h1>
+      <p>Username: {user?.username}</p>
+      <p>Email: {user?.email}</p>
+      <p>Role: {user?.role}</p>
+    </div>
+  }
+/>
+
+<Route path="/bvy-estate" element={<AdminEntry onAdminLogin={handleAdminLogin} />} />
+</Routes>
 
       {!isAdminView && <AIChat />}
 
