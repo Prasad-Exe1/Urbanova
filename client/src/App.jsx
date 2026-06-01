@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Routes, Route, Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
+import { Routes, Route, Link, Navigate, useLocation } from 'react-router-dom';
 import Home from './pages/Home';
 import Properties from './pages/Properties';
 import ListingDetails from './pages/ListingDetails';
@@ -23,8 +23,8 @@ function App() {
   const [showAuthModal, setShowAuthModal] = useState(false);
   const [authConfig, setAuthConfig] = useState({ view: 'login', role: 'buyer' });
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
+  const [showProfileModal, setShowProfileModal] = useState(false);
   const location = useLocation();
-  const navigate = useNavigate();
 
   useEffect(() => {
     const checkAuth = () => {
@@ -174,7 +174,7 @@ function App() {
               {user ? (
                 <button
                   type="button"
-                  onClick={() => navigate('/profile')}
+                  onClick={() => setShowProfileModal(true)}
                   className="hidden sm:inline-flex text-[12px] font-medium text-white/60 hover:text-white px-2 py-1.5 rounded transition-colors"
                 >
                   {user.username}
@@ -329,17 +329,7 @@ function App() {
 
         <Route path="/api-test" element={<ApiTester />} />
 
-<Route
-  path="/profile"
-  element={
-    <div style={{ padding: '40px', color: 'white' }}>
-      <h1>Profile</h1>
-      <p>Username: {user?.username}</p>
-      <p>Email: {user?.email}</p>
-      <p>Role: {user?.role}</p>
-    </div>
-  }
-/>
+
 
 <Route path="/bvy-estate" element={<AdminEntry onAdminLogin={handleAdminLogin} />} />
 </Routes>
@@ -355,6 +345,68 @@ function App() {
           initialView={authConfig.view}
           defaultRole={authConfig.role}
         />
+      )}
+
+      {showProfileModal && user && (
+        <div className="fixed inset-0 z-[1100] flex items-center justify-center bg-black/75 backdrop-blur-md p-md">
+          <div className="glass-panel relative w-full max-w-[420px] rounded-2xl border border-white/10 p-xl shadow-2xl text-center">
+            <button
+              type="button"
+              onClick={() => setShowProfileModal(false)}
+              className="absolute top-md right-md text-on-surface-variant hover:text-primary transition-colors p-xs rounded-full hover:bg-white/5"
+              aria-label="Close"
+            >
+              <span className="material-symbols-outlined !text-[20px]">close</span>
+            </button>
+
+            <div className="mb-lg">
+              <div className="mx-auto w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-md border border-primary/20">
+                <span className="material-symbols-outlined !text-[32px] text-primary">person</span>
+              </div>
+              <h2 className="font-headline-lg text-headline-lg text-primary m-0 tracking-tight">User Profile</h2>
+              <p className="font-body-md text-on-surface-variant mt-xs mb-0">
+                Manage your account details
+              </p>
+            </div>
+
+            <div className="flex flex-col gap-sm text-left bg-white/[0.03] border border-white/5 p-lg rounded-xl mb-lg">
+              <div className="flex flex-col">
+                <span className="text-[11px] text-white/40 tracking-[0.05em] uppercase font-semibold">Username</span>
+                <span className="text-white font-medium text-[15px]">{user.username}</span>
+              </div>
+              <div className="h-[1px] bg-white/5 my-1" />
+              <div className="flex flex-col">
+                <span className="text-[11px] text-white/40 tracking-[0.05em] uppercase font-semibold">Email Address</span>
+                <span className="text-white font-medium text-[15px]">{user.email || 'N/A'}</span>
+              </div>
+              <div className="h-[1px] bg-white/5 my-1" />
+              <div className="flex flex-col">
+                <span className="text-[11px] text-white/40 tracking-[0.05em] uppercase font-semibold">Role</span>
+                <span className="text-white font-medium text-[15px] capitalize">{user.role}</span>
+              </div>
+            </div>
+
+            <div className="flex gap-md">
+              <button
+                type="button"
+                onClick={() => setShowProfileModal(false)}
+                className="flex-1 text-[12px] font-semibold uppercase tracking-[0.06em] text-white/80 border border-white/15 px-4 py-2.5 rounded-lg hover:bg-white/[0.05] hover:text-white transition-all"
+              >
+                Close
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setShowProfileModal(false);
+                  handleLogout();
+                }}
+                className="flex-1 text-[12px] font-semibold uppercase tracking-[0.06em] text-on-primary bg-primary px-4 py-2.5 rounded-lg hover:brightness-105 active:brightness-95 transition-all"
+              >
+                Logout
+              </button>
+            </div>
+          </div>
+        </div>
       )}
     </div>
   );
