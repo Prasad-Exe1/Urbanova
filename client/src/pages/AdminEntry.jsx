@@ -24,7 +24,7 @@ function AdminEntry({ onAdminLogin }) {
     const endpoint = isLogin ? 'login' : 'register';
 
     try {
-      const res = await fetch(`/api/auth/${endpoint}`, {
+      const res = await fetch(`https://urbanova-eef6.onrender.com/api/auth/${endpoint}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),

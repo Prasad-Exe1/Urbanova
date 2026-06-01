@@ -15,7 +15,7 @@ function isProbablyEmail(s) {
 }
 
 // Register
-router.post('/register', async (req, res) => {
+router.post('/api/auth/register', async (req, res) => {
     try {
         const { username, email, password, role } = req.body;
 
