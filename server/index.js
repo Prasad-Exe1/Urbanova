@@ -14,7 +14,13 @@ const indexHtmlPath = path.join(CLIENT_DIST, 'index.html');
 const serveFrontend =
     process.env.NODE_ENV === 'production' && fs.existsSync(indexHtmlPath);
 
-app.use(cors());
+app.use(cors({
+  origin: [
+    'https://urbanova-teal.vercel.app',
+    'https://urbanova-git-main-raprexe-6297s-projects.vercel.app'
+  ],
+  credentials: true
+}));
 app.use(express.json({ limit: '2mb' }));
 app.use('/uploads', express.static('uploads'));
 
