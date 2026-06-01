@@ -41,9 +41,8 @@ function AdminEntry({ onAdminLogin }) {
         throw new Error('Access denied. Not an admin account.');
       }
 
-      localStorage.setItem('adminUser', JSON.stringify(data));
-      onAdminLogin(data);
-      navigate('/admin');
+     localStorage.setItem('adminUser', JSON.stringify(data));
+     onAdminLogin(data);
     } catch (err) {
       setError(err.message || 'Authentication failed');
     }
