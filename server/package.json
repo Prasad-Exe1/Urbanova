@@ -1,0 +1,40 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "Urbanova API — also carries monorepo dev scripts (client + server together).",
+  "main": "index.js",
+  "scripts": {
+    "setup": "npm install && npm install --prefix ../client",
+    "setup:windows": "powershell -ExecutionPolicy Bypass -File scripts/setup.ps1",
+    "dev:api": "nodemon index.js",
+    "dev:client": "npm run dev --prefix ../client",
+    "dev": "concurrently -n api,vite -c cyan,magenta \"npm run dev:api\" \"npm run dev:client\"",
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "check:env": "node scripts/checkEnv.js",
+    "create:admin": "node createAdmin.js",
+    "seed:hyderabad": "node seedHyderabadDefaults.js",
+    "smoke:openrouter": "node scripts/test-api.js",
+    "lint:client": "npm run lint --prefix ../client",
+    "build:client": "npm run build --prefix ../client",
+    "build": "npm run build:client",
+    "verify": "npm run lint:client && npm run build:client"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.105.1",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.6",
+    "dotenv": "^17.3.1",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "multer": "^2.0.2"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1",
+    "nodemon": "^3.1.14"
+  }
+}

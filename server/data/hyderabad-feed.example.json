@@ -1,0 +1,22 @@
+[
+  {
+    "title": "Open plot — Peerancheru (example feed row)",
+    "description": "Representative residential-zoned plot listing for Urbanova Hyderabad feed. Replace with your curated JSON hosted on GitHub raw or Drive.",
+    "price": 11800000,
+    "location": "Peerancheru, Hyderabad, Telangana",
+    "pincode": "500086",
+    "image": "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=900&q=80",
+    "external_id": "urbanova-hyd-feed-peerancheru-001",
+    "source": "hyderabad_json_feed"
+  },
+  {
+    "title": "Apartment resale — Sainikpuri (example feed row)",
+    "description": "Sample secondary-market flat entry. external_id stays stable so poller upserts refresh price/text without duplicates.",
+    "price": 9200000,
+    "location": "Sainikpuri, Secunderabad, Telangana",
+    "pincode": "500094",
+    "image": "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=900&q=80",
+    "external_id": "urbanova-hyd-feed-sainikpuri-002",
+    "source": "hyderabad_json_feed"
+  }
+]

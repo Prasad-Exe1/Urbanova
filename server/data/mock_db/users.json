@@ -1,0 +1,20 @@
+[
+  {
+    "username": "admin",
+    "email": "admin@urbanova.com",
+    "password": "$2a$10$tib7Mc9eqna4JsaeKEQOhu66yLJmlH66NVQKSL86EVgX/w1w6m5aa",
+    "role": "admin",
+    "id": "mock-2l9ks2x6zgl-g723ahc7xpt",
+    "created_at": "2026-06-01T10:14:29.905Z",
+    "updated_at": "2026-06-01T10:14:29.905Z"
+  },
+  {
+    "username": "nnn",
+    "email": "nnn@gmail.com",
+    "password": "$2a$10$U/CmILFOE9t5Xukq3HuwzuYpfsqd3nGLl/5z.2se9Pgv8nArlG7dS",
+    "role": "buyer",
+    "id": "mock-fhv869bgni5-e28vf6ela39",
+    "created_at": "2026-06-01T10:17:02.471Z",
+    "updated_at": "2026-06-01T10:17:02.471Z"
+  }
+]
