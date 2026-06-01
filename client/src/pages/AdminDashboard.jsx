@@ -62,7 +62,7 @@ function AdminDashboard() {
     };
 
     const fetchUsers = async () => {
-        const res = await fetch('/${API_URL}api/admin/users', {
+        const res = await fetch(`${API_URL}/api/admin/users`, {
             headers: getAuthHeaders(false)
         });
         if (!res.ok) throw new Error('Failed to fetch users');
@@ -71,7 +71,7 @@ function AdminDashboard() {
     };
 
     const fetchProperties = async () => {
-        const res = await fetch('${API_URL}/api/properties?scope=all', {
+        const res = await fetch(`${API_URL}/api/properties?scope=all`, {
             headers: getAuthHeaders(false),
         });
         if (!res.ok) throw new Error('Failed to fetch properties');
@@ -80,7 +80,7 @@ function AdminDashboard() {
     };
 
     const fetchVerifications = async () => {
-        const res = await fetch('${API_URL}/api/admin/pending-verifications', {
+        const res = await fetch(`${API_URL}/api/admin/pending-verifications`, {
             headers: getAuthHeaders(false)
         });
         if (res.ok) {
