@@ -79,12 +79,7 @@ function App() {
     setUser(null);
     setAdminUser(userData);
     setShowAuthModal(false);
-    window.location.href = '/admin';
-  } else {
-    localStorage.setItem('user', JSON.stringify(userData));
-    setUser(userData);
-    setShowAuthModal(false);
-  }
+}
 };
 
   const handleAdminLogin = (adminData) => {
