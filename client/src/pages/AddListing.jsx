@@ -38,7 +38,7 @@ function AddListing() {
     }
 
     try {
-      const res = await fetch('/api/properties/generate-description', {
+      const res = await fetch('${API_URL}/api/properties/generate-description', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ title: formData.title, location: formData.location, price: formData.price }),

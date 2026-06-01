@@ -28,7 +28,7 @@ function SellerDashboard() {
       try {
         const token = user?.token;
 
-        const userRes = await fetch('/api/users/me', {
+        const userRes = await fetch('${API_URL}/api/users/me', {
           headers: { token: `Bearer ${token}` },
         });
         if (userRes.ok) {
@@ -38,7 +38,7 @@ function SellerDashboard() {
           localStorage.setItem('user', JSON.stringify(updatedUser));
         }
 
-        const res = await fetch('/api/properties/user/stats', {
+        const res = await fetch('${API_URL}/api/properties/user/stats', {
           headers: { token: `Bearer ${token}` },
         });
 
@@ -65,7 +65,7 @@ function SellerDashboard() {
     formData.append('document', verifyFile);
 
     try {
-      const res = await fetch('/api/users/verify', {
+      const res = await fetch('${API_URL}/api/users/verify', {
         method: 'POST',
         headers: { token: `Bearer ${user.token}` },
         body: formData,

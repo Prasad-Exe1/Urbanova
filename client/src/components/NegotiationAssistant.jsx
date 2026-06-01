@@ -23,7 +23,7 @@ function NegotiationAssistant({ property, isOpen, onClose }) {
         try {
             const offer = parseInt(offerPrice);
             
-            const res = await fetch('/api/ai/negotiate', {
+            const res = await fetch('${API_URL}/api/ai/negotiate', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ property, offerPrice: offer })

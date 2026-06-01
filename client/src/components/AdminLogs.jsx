@@ -20,7 +20,7 @@ const AdminLogs = () => {
                     return;
                 }
 
-                const res = await fetch('/api/logs', {
+                const res = await fetch(`${API_URL}/api/logs`, {
                     headers: {
                         'token': token
                     }
