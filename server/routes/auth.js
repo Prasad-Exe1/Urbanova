@@ -15,10 +15,6 @@ function isProbablyEmail(s) {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s);
 }
 
-router.get('/test', (req, res) => {
-  res.json({ message: 'auth works' });
-});
-
 
 // Register
 router.post('/register', async (req, res) => {
@@ -119,3 +115,9 @@ router.post('/login', async (req, res) => {
 });
 
 module.exports = router;
+
+
+router.get('/test', (req, res) => {
+  res.json({ ok: true });
+});
+
