@@ -48,7 +48,7 @@ function ListingDetails({ user }) {
   const [scheduleSuccess, setScheduleSuccess] = useState(false);
 
   useEffect(() => {
-    fetch(`/api/properties/${id}`)
+    fetch(`https://urbanova-eef6.onrender.com/api/properties/${id}`)
       .then((res) => res.json())
       .then((data) => setProperty(data))
       .catch((err) => console.error(err));

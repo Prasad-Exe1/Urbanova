@@ -36,7 +36,7 @@ function AIChat() {
     setIsLoading(true);
 
     try {
-      const res = await fetch('/api/ai/chat', {
+      const res = await fetch('https://urbanova-eef6.onrender.com/api/ai/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ query, properties }),
