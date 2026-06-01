@@ -72,18 +72,19 @@ function App() {
   };
 
   const handleLogin = (userData) => {
-    if (userData.role === 'admin') {
-      localStorage.removeItem('user');
-      localStorage.setItem('adminUser', JSON.stringify(userData));
-      setUser(null);
-      setAdminUser(userData);
-      setShowAuthModal(false);
-      window.location.href = '/admin';
-    } else {
-      setUser(userData);
-      setShowAuthModal(false);
-    }
-  };
+  if (userData.role === 'admin') {
+    localStorage.removeItem('user');
+    localStorage.setItem('adminUser', JSON.stringify(userData));
+    setUser(null);
+    setAdminUser(userData);
+    setShowAuthModal(false);
+    window.location.href = '/admin';
+  } else {
+    localStorage.setItem('user', JSON.stringify(userData));
+    setUser(userData);
+    setShowAuthModal(false);
+  }
+};
 
   const handleAdminLogin = (adminData) => {
     setAdminUser(adminData);
@@ -172,7 +173,7 @@ function App() {
               {user ? (
                 <button
                   type="button"
-                  onClick={handleLogout}
+                  onClick={() => navigate('/profile')}
                   className="hidden sm:inline-flex text-[12px] font-medium text-white/60 hover:text-white px-2 py-1.5 rounded transition-colors"
                 >
                   {user.username}
