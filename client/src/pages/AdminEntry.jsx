@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { } from 'react-router-dom';
 import { Lock, User, Mail, ShieldAlert } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 function AdminEntry({ onAdminLogin }) {
-  const navigate = useNavigate();
+  
   const [isLogin, setIsLogin] = useState(true);
   const [formData, setFormData] = useState({
     username: '',
