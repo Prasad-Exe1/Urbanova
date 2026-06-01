@@ -96,7 +96,7 @@ function Home({ openAuth, user }) {
   }, []);
 
   useEffect(() => {
-    fetch('/api/properties')
+    fetch('https://urbanova-eef6.onrender.com/api/properties')
       .then((r) => (r.ok ? r.json() : []))
       .then((rows) => (Array.isArray(rows) ? setCatalog(rows) : setCatalog([])))
       .catch(() => setCatalog([]));

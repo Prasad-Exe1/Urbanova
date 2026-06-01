@@ -55,7 +55,7 @@ function ListingDetails({ user }) {
   }, [id]);
 
   useEffect(() => {
-    fetch('/api/properties')
+    fetch('https://urbanova-eef6.onrender.com/api/properties')
       .then((res) => res.json())
       .then((data) => {
         setHeroCatalogMap(assignUniqueCatalogHeroes(Array.isArray(data) ? data : []));

@@ -84,7 +84,7 @@ function Properties() {
   const [sortBy, setSortBy] = useState('relevance');
 
   useEffect(() => {
-    fetch('/api/properties')
+    fetch('https://urbanova-eef6.onrender.com/api/properties')
       .then((res) => {
         if (!res.ok) throw new Error('Failed to fetch properties');
         return res.json();

@@ -16,7 +16,7 @@ function AIChat() {
   const messagesEndRef = useRef(null);
 
   useEffect(() => {
-    fetch('/api/properties')
+    fetch('https://urbanova-eef6.onrender.com/api/properties')
       .then((res) => res.json())
       .then((data) => setProperties(Array.isArray(data) ? data : []))
       .catch((err) => console.error(err));
