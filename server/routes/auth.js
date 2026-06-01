@@ -1,4 +1,5 @@
 const router = require('express').Router();
+console.log("AUTH ROUTES LOADED");
 const supabase = require('../config/supabase');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
@@ -15,7 +16,7 @@ function isProbablyEmail(s) {
 }
 
 // Register
-router.post('/api/auth/register', async (req, res) => {
+router.post('/register', async (req, res) => {
     try {
         const { username, email, password, role } = req.body;
 
