@@ -114,10 +114,15 @@ router.post('/login', async (req, res) => {
     }
 });
 
-module.exports = router;
-
-
 router.get('/test', (req, res) => {
   res.json({ ok: true });
 });
+
+console.log('REGISTER ROUTE ADDED');
+console.log('LOGIN ROUTE ADDED');
+
+module.exports = router;
+
+
+
 
