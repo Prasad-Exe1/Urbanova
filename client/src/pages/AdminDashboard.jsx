@@ -5,6 +5,7 @@ import Toast from '../components/Toast';
 import AdminAnalytics from '../components/AdminAnalytics';
 import AdminLogs from '../components/AdminLogs';
 import { uploadUrl } from '../utils/uploadUrl.js';
+const API_URL = 'https://urbanova-eef6.onrender.com';
 
 function AdminDashboard() {
     const [stats, setStats] = useState({ users: 0, properties: 0, totalValue: 0 });
@@ -52,7 +53,7 @@ function AdminDashboard() {
     };
 
     const fetchStats = async () => {
-        const res = await fetch('/api/admin/stats', {
+        const res = await fetch('https://urbanova-eef6.onrender.com/api/admin/stats', {
             headers: getAuthHeaders(false)
         });
         if (!res.ok) throw new Error('Failed to fetch stats');
@@ -90,7 +91,7 @@ function AdminDashboard() {
 
     const handleVerifyStatus = async (id, status) => {
         try {
-            await fetch(`/api/admin/verify-seller/${id}`, {
+            await fetch(`${API_URL}/api/admin/verify-seller/${id}`, {
                 method: 'PUT',
                 headers: getAuthHeaders(true),
                 body: JSON.stringify({ status })
@@ -192,7 +193,7 @@ function AdminDashboard() {
 
     const handleDeleteUser = (id) => {
         openConfirm('Are you sure you want to ban this user?', async () => {
-            await fetch(`/api/admin/users/${id}`, {
+            await fetch(`${API_URL}/api/admin/users/${id}`, {
                 method: 'DELETE',
                 headers: getAuthHeaders(false)
             });
@@ -205,7 +206,7 @@ function AdminDashboard() {
 
     const handleDeleteProperty = (id) => {
         openConfirm('Delete this listing permanently?', async () => {
-            await fetch(`/api/admin/properties/${id}`, {
+            await fetch(`${API_URL}/api/admin/properties/${id}`, {
                 method: 'DELETE',
                 headers: getAuthHeaders(false)
             });
@@ -233,7 +234,7 @@ function AdminDashboard() {
         const endpoint = type === 'user' ? `users/${data._id}` : `properties/${data._id}`;
 
         try {
-            await fetch(`/api/admin/${endpoint}`, {
+            await fetch(`${API_URL}/api/admin/${endpoint}`, {
                 method: 'PUT',
                 headers: getAuthHeaders(true),
                 body: JSON.stringify(data)
